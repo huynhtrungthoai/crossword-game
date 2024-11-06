@@ -2,7 +2,7 @@ interface IProps {}
 
 // 561 111
 
-const Logo: React.FC<IProps> = (props: IProps) => {
+const Logo: React.FC<IProps> = () => {
   return (
     <svg
       width="209"
@@ -14,16 +14,8 @@ const Logo: React.FC<IProps> = (props: IProps) => {
     >
       <rect width="209" height="36" fill="url(#pattern0)" />
       <defs>
-        <pattern
-          id="pattern0"
-          patternContentUnits="objectBoundingBox"
-          width="1"
-          height="1"
-        >
-          <use
-            xlinkHref="#image0_2_10"
-            transform="scale(0.00078125 0.00369004)"
-          />
+        <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+          <use xlinkHref="#image0_2_10" transform="scale(0.00078125 0.00369004)" />
         </pattern>
         <image
           id="image0_2_10"

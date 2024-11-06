@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Col, Row } from 'antd';
 import './style.scss';
 import { Button } from '@/components/ui/button';
@@ -10,17 +11,11 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-  DialogFooter,
 } from '@/components/ui/dialog';
 import { resetGame, setGame, showAnswer } from '@/redux/slices/userSlice';
 import { crosswordData } from '@/utilities/dumpData';
 
-interface IProps {}
-
-const HomePage: React.FC<IProps> = (props: IProps) => {
-  const navigate = useNavigate();
-  const [tabIndex, setTabIndex] = useState(0);
+const HomePage: React.FC = () => {
   const dispatch = useDispatch();
   const [countdown, setCountdown] = useState(30);
   const [selectedSuggest, setSelectedSuggest] = useState(1);

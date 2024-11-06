@@ -1,14 +1,11 @@
-import { EUserRole } from '../enums';
-
-
 export interface UserReducer {
-    currentUser: UserMain
+  currentUser: UserMain;
 }
 
 export interface UserMain {
-    id: string,
-    email: string,
-    name: string,
-    role: EUserRole,
-    isEmailVerified: boolean,
+  id: string;
+  email: string;
+  name: string;
+  role: string;
+  isEmailVerified: boolean;
 }

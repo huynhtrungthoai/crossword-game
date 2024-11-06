@@ -1,0 +1,19 @@
+.rowForm {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+.textInput {
+  width: 25%;
+  text-align: end;
+  position: relative;
+  padding: 12px 15px 0 0;
+}
+
+.colInput {
+  width: 70%;
+  height: 70px;
+}

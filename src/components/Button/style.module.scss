@@ -1,0 +1,13 @@
+.buttonPrimary {
+  display: flex;
+  height: 35px;
+  width: 110px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 12px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid var(--teal-teal-300, #ffa75e);
+  color: var(--teal-teal-300, #ffa75e);
+}

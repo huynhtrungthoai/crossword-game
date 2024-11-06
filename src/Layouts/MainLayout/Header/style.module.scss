@@ -1,0 +1,61 @@
+$heightHeader: 70px;
+$heightInfo: 40px;
+$colorPrimary: #ff7200;
+
+.info {
+  background-color: #141d1e;
+  width: 100%;
+  height: $heightInfo;
+  // padding-left: 22.6em;
+}
+
+.col {
+  border: 1px solid #333333;
+  color: white;
+  justify-content: space-evenly;
+  overflow: hidden;
+  font-weight: 500;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  aspect-ratio: 3.2;
+  max-width: 210px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.header {
+  height: $heightHeader;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  box-shadow: 1px 1px 2px 0px rgba(50, 50, 50, 0.11);
+  position: sticky;
+  z-index: 1000;
+  top: 0;
+}
+
+.menu {
+  font-size: 12px;
+  color: #2c2c2c;
+  font-weight: normal;
+  text-transform: uppercase;
+  border-width: 0;
+  max-width: 70%;
+}
+
+.leftRowHeader {
+  align-items: center;
+  justify-content: left;
+}
+.rightRowHeader {
+  align-items: center;
+  justify-content: right;
+}
+.searchHeaderView { 
+  margin-left: 16;   
+  align-items: center;
+}

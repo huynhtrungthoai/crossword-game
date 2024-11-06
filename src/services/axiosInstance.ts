@@ -1,18 +1,18 @@
 import axios, { AxiosInstance } from 'axios';
 
-interface IResponse {
-  config: object;
-  headers: object;
-  data: object | [];
-  request: object;
-}
+// interface IResponse {
+//   config: object;
+//   headers: object;
+//   data: object | [];
+//   request: object;
+// }
 
-const messageNotifyEnglish = {
-  InternalServerError: 'Internal Server Error',
-  InvalidParameter: 'Invalid parameter',
-};
+// const messageNotifyEnglish = {
+//   InternalServerError: 'Internal Server Error',
+//   InvalidParameter: 'Invalid parameter',
+// };
 
-const apiNotShowError = [''];
+// const apiNotShowError = [''];
 
 const BASE_URL = import.meta.env.VITE_BE_URL;
 

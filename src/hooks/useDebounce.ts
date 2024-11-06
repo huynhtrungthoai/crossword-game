@@ -1,10 +1,10 @@
 import { typeofData } from '@/utilities/Helpers';
 import { useEffect, useState } from 'react';
 
-type TypeData = {
-  name: string;
-  value: string;
-};
+// type TypeData = {
+//   name: string;
+//   value: string;
+// };
 
 export default function useDebounce(data: string | number | any, delay: number) {
   // State and setters for debounced value

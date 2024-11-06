@@ -1,6 +1,3 @@
-import * as IUser from './user'
+import * as IUser from './user';
 
-
-export { 
-    IUser
-}
+export { IUser };

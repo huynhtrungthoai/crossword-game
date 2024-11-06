@@ -2,7 +2,6 @@
 import { Col, Row } from 'antd';
 import './style.scss';
 import { Button } from '@/components/ui/button';
-import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -13,14 +12,16 @@ import {
   DialogTitle,
 } from '@/components/ui/dialog';
 import { resetGame, setGame, showAnswer } from '@/redux/slices/userSlice';
-import { crosswordData } from '@/utilities/dumpData';
+import { crosswordData, TypeCrosswordData } from '@/utilities/dumpData';
 
-const HomePage: React.FC = () => {
+export const HomePage = () => {
   const dispatch = useDispatch();
   const [countdown, setCountdown] = useState(30);
   const [selectedSuggest, setSelectedSuggest] = useState(1);
   const [showDialog, setShowDialog] = useState(false);
-  const [selectedQuestion, setSelectedQuestion] = useState(undefined);
+  const [selectedQuestion, setSelectedQuestion] = useState<TypeCrosswordData | undefined>(
+    undefined
+  );
   const gameData = useSelector((state: { user: { games: any } }) => state.user.games);
 
   const filterPeopleGame = gameData.filter((game: any) => game.type === 'PEOPLE');
@@ -63,7 +64,9 @@ const HomePage: React.FC = () => {
   };
 
   // SUGGESTION DIALOG
-  function renderSuggestDialog() {
+  const renderSuggestDialog = () => {
+    const key = `suggest${selectedSuggest}` as keyof TypeCrosswordData;
+    const question = selectedQuestion?.[key] ?? '';
     return (
       <Dialog open={showDialog} onOpenChange={setShowDialog}>
         <DialogContent
@@ -75,7 +78,7 @@ const HomePage: React.FC = () => {
           <DialogHeader>
             <DialogTitle className="text-4xl">{`Gợi ý ${selectedSuggest}`}</DialogTitle>
             <DialogDescription className="text-center text-7xl font-semibold mv-10 text-black">
-              {selectedQuestion?.[`suggest${selectedSuggest}`]}
+              {question}
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-center items-center mt-4">
@@ -89,7 +92,7 @@ const HomePage: React.FC = () => {
         </DialogContent>
       </Dialog>
     );
-  }
+  };
 
   return (
     <Col>
@@ -189,7 +192,7 @@ const HomePage: React.FC = () => {
               }`}</div>
             </Col>
             <Row onClick={onShowAnswer} className="crossword-grid">
-              {selectedQuestion?.answer.split('').map((item, index) => (
+              {(selectedQuestion?.answer ?? '').split('').map((item, index) => (
                 <Col key={index} className="crossword-cell font-semibold text-6xl">
                   {selectedQuestion?.isShow ? item : ''}
                 </Col>
@@ -231,5 +234,3 @@ const HomePage: React.FC = () => {
     </Col>
   );
 };
-
-export default HomePage;

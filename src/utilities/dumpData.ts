@@ -1,3 +1,13 @@
+export interface TypeCrosswordData {
+  id?: string;
+  answer?: string;
+  suggest1?: string;
+  suggest2?: string;
+  suggest3?: string;
+  isShow: boolean;
+  type?: string;
+}
+
 export const crosswordData = [
   {
     id: '1',

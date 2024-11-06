@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
+    "module": "ES6",
+    "forceConsistentCasingInFileNames": true,
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
     "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
@@ -23,7 +23,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*", "./dist/*", ""],
-      "containers/*": ["src/Containers/*"],
+      "containers/*": ["src/screens/*"],
       "components/*": ["src/components/*"],
       "shared/*": ["src/@shared/*"],
       "utils/*": ["src/utilities/*"]

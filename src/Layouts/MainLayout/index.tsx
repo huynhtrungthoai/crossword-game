@@ -1,25 +1,17 @@
+import React from 'react';
 import { Layout } from 'antd';
-import { Content } from 'antd/es/layout/layout';
-import { Outlet } from 'react-router';
-import Banner from './Banner';
-import FooterCustom from './Footer';
-import HeaderCustom from './Header';
 import styles from './style.module.scss';
+import { Outlet } from 'react-router-dom';
+import { Content } from 'antd/es/layout/layout';
 
-interface IMainLayoutProps {}
+interface IProps {}
 
-const MainLayout: React.FC<IMainLayoutProps> = (props: IMainLayoutProps) => {
-  const year = new Date().getFullYear();
-
+export const MainLayout: React.FC<IProps> = () => {
   return (
     <Layout>
-      <HeaderCustom />
-      <Banner />
       <Content className={`${styles.content} container`}>
         <Outlet />
       </Content>
-      <FooterCustom year={year} />
     </Layout>
   );
 };
-export default MainLayout

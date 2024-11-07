@@ -26,6 +26,7 @@ export const GamePages = () => {
   );
   const gameData = useSelector((state: { user: { games: any } }) => state.user.games);
   const soundCountdownRef = useRef(new Audio(countdownSound));
+  console.log(`🚀 ~ GamePages ~ soundCountdownRef:`, soundCountdownRef);
 
   const soundCorrectRef = useRef(new Audio(correctSound));
 

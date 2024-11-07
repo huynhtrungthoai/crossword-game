@@ -23,7 +23,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*", "./dist/*", ""],
-      "containers/*": ["src/screens/*"],
+      "containers/*": ["src/containers/*"],
       "components/*": ["src/components/*"],
       "shared/*": ["src/@shared/*"],
       "utils/*": ["src/utilities/*"]

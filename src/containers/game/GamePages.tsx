@@ -2,7 +2,7 @@
 import { Col, Row } from 'antd';
 import './style.scss';
 import { Button } from '@/components/ui/button';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Dialog,
@@ -13,8 +13,10 @@ import {
 } from '@/components/ui/dialog';
 import { resetGame, setGame, showAnswer } from '@/redux/slices/userSlice';
 import { crosswordData, TypeCrosswordData } from '@/utilities/dumpData';
+import countdownSound from '../../assets/sounds/countdown.mp3';
+import correctSound from '../../assets/sounds/correct.mp3';
 
-export const HomePage = () => {
+export const GamePages = () => {
   const dispatch = useDispatch();
   const [countdown, setCountdown] = useState(30);
   const [selectedSuggest, setSelectedSuggest] = useState(1);
@@ -23,13 +25,26 @@ export const HomePage = () => {
     undefined
   );
   const gameData = useSelector((state: { user: { games: any } }) => state.user.games);
+  const soundCountdownRef = useRef(new Audio(countdownSound));
+
+  const soundCorrectRef = useRef(new Audio(correctSound));
 
   const filterPeopleGame = gameData.filter((game: any) => game.type === 'PEOPLE');
   const filterLocationGame = gameData.filter((game: any) => game.type === 'LOCATION');
 
+  // PLAY COUNTDOWN SOUND
   useEffect(() => {
-    console.log(`🚀 ~ selectedQuestion:`, selectedQuestion, gameData);
-  }, [selectedQuestion]);
+    if (showDialog) {
+      const soundPlayTimeOut = setTimeout(() => {
+        soundCountdownRef.current.volume = 0.5; // Set volume to 50%
+        soundCountdownRef.current.play();
+      }, 1000);
+      return () => clearTimeout(soundPlayTimeOut);
+    } else {
+      soundCountdownRef.current.pause();
+      soundCountdownRef.current.currentTime = 0;
+    }
+  }, [showDialog]);
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -50,6 +65,10 @@ export const HomePage = () => {
   };
 
   const onShowAnswer = () => {
+    if (!selectedQuestion?.isShow) {
+      soundCorrectRef.current.volume = 0.5; // Set volume to 50%
+      soundCorrectRef.current.play();
+    }
     setSelectedQuestion({ ...selectedQuestion, isShow: true });
     selectedQuestion?.id && dispatch(showAnswer({ id: selectedQuestion?.id }));
   };
@@ -109,7 +128,7 @@ export const HomePage = () => {
           }}
         >
           <Col
-            className="bg-white rounded-lg p-4 flex flex-col items-center"
+            className="bg-white rounded-lg p-2 flex flex-col items-center"
             // style={{ width: '60%' }}
           >
             <div className="text-4xl font-semibold">Chủ đề: Nhân vật</div>
@@ -118,7 +137,6 @@ export const HomePage = () => {
                 return (
                   <Button
                     key={index}
-                    size={'lg'}
                     onClick={() => setSelectedQuestion(game)}
                     className={`m-2 ${game?.isShow ? 'bg-gray-700' : 'bg-green-500'}  ${
                       game?.isShow ? 'hover:bg-gray-700' : 'hover:bg-green-400'
@@ -143,7 +161,7 @@ export const HomePage = () => {
           }}
         >
           <Col
-            className="bg-white rounded-lg p-4 flex flex-col items-center"
+            className="bg-white rounded-lg p-2 flex flex-col items-center"
             // style={{ width: '60%' }}
           >
             <div className="text-4xl font-semibold">Chủ đề: Địa danh</div>
@@ -152,7 +170,6 @@ export const HomePage = () => {
                 return (
                   <Button
                     key={index}
-                    size={'lg'}
                     onClick={() => setSelectedQuestion(game)}
                     className={`m-2 ${game?.isShow ? 'bg-gray-700' : 'bg-green-500'} ${
                       game?.isShow ? 'hover:bg-gray-700' : 'hover:bg-green-400'

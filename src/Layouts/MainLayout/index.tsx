@@ -1,17 +1,18 @@
 import React from 'react';
-import { Layout } from 'antd';
-import styles from './style.module.scss';
+import { Col, Layout } from 'antd';
 import { Outlet } from 'react-router-dom';
-import { Content } from 'antd/es/layout/layout';
 
 interface IProps {}
 
 export const MainLayout: React.FC<IProps> = () => {
   return (
     <Layout>
-      <Content className={`${styles.content} container`}>
+      <Col style={{ height: 'auto', width: '100%', backgroundColor: 'white' }}>
         <Outlet />
-      </Content>
+      </Col>
+      {/* <Content className={`${styles.content} container bg-red `} style={{ width: '100%' }}>
+        <Outlet />
+      </Content> */}
     </Layout>
   );
 };

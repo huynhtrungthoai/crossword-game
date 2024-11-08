@@ -15,9 +15,11 @@ import { resetGame, setGame, showAnswer } from '@/redux/slices/userSlice';
 import { crosswordData, TypeCrosswordData } from '@/utilities/dumpData';
 import countdownSound from '../../assets/sounds/countdown.mp3';
 import correctSound from '../../assets/sounds/correct.mp3';
+import { useNavigate } from 'react-router-dom';
 
 export const GamePages = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [countdown, setCountdown] = useState(30);
   const [selectedSuggest, setSelectedSuggest] = useState(1);
   const [showDialog, setShowDialog] = useState(false);
@@ -80,7 +82,7 @@ export const GamePages = () => {
 
   const onResetGame = () => {
     dispatch(resetGame());
-    window.location.reload();
+    navigate('/');
   };
 
   // SUGGESTION DIALOG
